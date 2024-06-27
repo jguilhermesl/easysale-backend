@@ -6,11 +6,11 @@ const path = require('path');
 function generateUseCaseFile(fileName, directory) {
   const className = fileName.split('-').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join('').replace(".ts", "");
   const classContent = `interface ${className}UseCaseProps {
-    companyId: string
+    sub: string
     }
 
     export class ${className}UseCase {
-      async execute({ companyId }: ${className}UseCaseProps) {
+      async execute({ sub }: ${className}UseCaseProps) {
         
       }
     }
@@ -36,10 +36,10 @@ function generateHttpFile(fileName, directory) {
 
     export const ${className.charAt(0).toLowerCase() + className.slice(1)} = async (req: Request, res: Response) => {
       try {
-        const {companyId} = req.userState;
+        const {sub} = req.userState;
         
         const useCase = new ${className}UseCase();
-        await useCase.execute({ companyId })
+        await useCase.execute({ sub })
 
         return res.status(200).send({ });
       } catch(err: any) {

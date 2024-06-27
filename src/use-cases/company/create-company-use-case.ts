@@ -1,3 +1,4 @@
+import { hash } from "bcryptjs";
 import { companyDAO } from "@/DAO/company"
 
 interface CreateCompanyUseCaseProps {
@@ -9,10 +10,12 @@ interface CreateCompanyUseCaseProps {
 
 export class CreateCompanyUseCase {
   async execute({ email, name, password, phone }: CreateCompanyUseCaseProps) {
+    const passwordHash = await hash(password, 8)
+
     await companyDAO.create({
       email,
       name,
-      password,
+      password: passwordHash,
       phone,
       createdAt: new Date(),
       updatedAt: new Date()

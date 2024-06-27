@@ -1,9 +1,9 @@
 interface DeleteProductUseCaseProps {
-  companyId: string
+  sub: string
 }
 
 export class DeleteProductUseCase {
-  async execute({ companyId }: DeleteProductUseCaseProps) {
+  async execute({ sub }: DeleteProductUseCaseProps) {
 
   }
 }

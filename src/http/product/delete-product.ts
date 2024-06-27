@@ -4,10 +4,10 @@ import { handleErrors } from '@/utils/handle-errors';
 
 export const deleteProduct = async (req: Request, res: Response) => {
   try {
-    const { companyId } = req.userState;
+    const { sub } = req.userState;
 
     const useCase = new DeleteProductUseCase();
-    await useCase.execute({ companyId })
+    await useCase.execute({ sub })
 
     return res.status(200).send({});
   } catch (err: any) {

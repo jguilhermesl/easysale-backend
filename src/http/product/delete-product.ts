@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { CreateProductUseCase } from '@/use-cases/./product/create-product-use-case';
+import { DeleteProductUseCase } from '@/use-cases/./product/delete-product-use-case';
 import { handleErrors } from '@/utils/handle-errors';
 
-export const createProduct = async (req: Request, res: Response) => {
+export const deleteProduct = async (req: Request, res: Response) => {
   try {
     const { companyId } = req.userState;
 
-    const useCase = new CreateProductUseCase();
+    const useCase = new DeleteProductUseCase();
     await useCase.execute({ companyId })
 
     return res.status(200).send({});

@@ -1,10 +1,11 @@
-interface CreateProductUseCaseProps {
-    companyId: string
-    }
+import { productDAO } from "@/DAO/product"
 
-    export class CreateProductUseCase {
-      async execute({ companyId }: CreateProductUseCaseProps) {
-        
-      }
-    }
-    
+interface CreateProductUseCaseProps {
+  companyId: string
+}
+
+export class CreateProductUseCase {
+  async execute({ companyId }: CreateProductUseCaseProps) {
+    await productDAO.create({})
+  }
+}

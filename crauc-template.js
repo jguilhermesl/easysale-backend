@@ -1,4 +1,4 @@
-// node template.js update-contacts-list ./contacts-list
+// node crauc-template.js create-company ./company
 
 const fs = require('fs');
 const path = require('path');
